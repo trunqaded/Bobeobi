@@ -1,0 +1,625 @@
+:root {
+  color-scheme: light;
+  --paper: #bda77f;
+  --paper-light: #dcc69b;
+  --ink: #17110c;
+  --muted: #584430;
+  --red: #8b1d17;
+  --blue: #23485a;
+  --gold: #794517;
+  --line: rgba(23, 17, 12, 0.32);
+  --soft-line: rgba(23, 17, 12, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--ink);
+  font-family: "Times New Roman", Georgia, serif;
+  background:
+    linear-gradient(90deg, rgba(113, 28, 21, 0.13), transparent 30%),
+    linear-gradient(142deg, transparent 0 62%, rgba(22, 45, 54, 0.14) 62% 64%, transparent 64%),
+    var(--paper);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  content: "";
+  opacity: 0.14;
+  background-image:
+    linear-gradient(rgba(23, 17, 12, 0.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 17, 12, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px, 48px 48px;
+  mix-blend-mode: multiply;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+p,
+figure {
+  margin: 0;
+}
+
+.page-shell {
+  overflow: hidden;
+}
+
+.hero {
+  position: relative;
+  min-height: 92svh;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(21rem, 1.08fr);
+  align-items: stretch;
+  border-bottom: 1px solid var(--line);
+  background: var(--ink);
+  color: var(--paper-light);
+}
+
+.hero::after,
+.archive-intro::after {
+  position: absolute;
+  right: 7vw;
+  bottom: 7vh;
+  width: clamp(7rem, 14vw, 15rem);
+  height: clamp(7rem, 14vw, 15rem);
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  content: "";
+  opacity: 0.2;
+}
+
+.hero__image {
+  position: relative;
+  min-height: 32rem;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero__image::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(90deg, transparent 58%, rgba(23, 17, 12, 0.7)),
+    linear-gradient(0deg, rgba(23, 17, 12, 0.18), transparent 42%);
+}
+
+.hero__image img {
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.04) saturate(0.95) brightness(0.9);
+  transform: scale(1.04);
+}
+
+.hero__copy {
+  position: relative;
+  z-index: 1;
+  align-self: center;
+  padding: clamp(2.5rem, 7vw, 7rem) clamp(1.5rem, 6vw, 6rem);
+}
+
+.kicker,
+.work-meta {
+  margin: 0;
+  color: var(--muted);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.hero .kicker {
+  color: rgba(234, 217, 185, 0.62);
+}
+
+h1 {
+  margin-top: 0.8rem;
+  color: var(--paper-light);
+  font-size: clamp(3.5rem, 7.6vw, 7.6rem);
+  font-weight: 400;
+  line-height: 0.82;
+}
+
+.hero__line {
+  max-width: 14ch;
+  margin-top: 1.5rem;
+  color: rgba(234, 217, 185, 0.86);
+  font-size: clamp(1.15rem, 2vw, 2.15rem);
+  line-height: 1.02;
+}
+
+.glyph-strip {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid rgba(234, 217, 185, 0.18);
+  color: rgba(234, 217, 185, 0.72);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.62rem, 1vw, 0.86rem);
+  text-transform: uppercase;
+}
+
+.glyph-strip a,
+.glyph-strip span {
+  min-height: 3.6rem;
+  display: grid;
+  place-items: center;
+  border-right: 1px solid rgba(234, 217, 185, 0.18);
+}
+
+.glyph-strip a:hover {
+  color: var(--paper-light);
+  background: rgba(159, 34, 26, 0.24);
+}
+
+.archive-intro {
+  position: relative;
+  min-height: 48svh;
+  display: grid;
+  align-content: center;
+  gap: 1rem;
+  padding: clamp(3rem, 7vw, 7rem) clamp(1.25rem, 8vw, 8rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.archive-intro h2,
+.work-text h2 {
+  max-width: 13ch;
+  color: var(--ink);
+  font-size: clamp(2rem, 4vw, 4.4rem);
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.archive-intro h2 {
+  max-width: 18ch;
+}
+
+.poem-work {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(21rem, 0.92fr);
+  gap: clamp(1rem, 3vw, 3rem);
+  max-width: 96rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 4vw, 4rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.poem-work:nth-of-type(even) {
+  grid-template-columns: minmax(21rem, 0.92fr) minmax(0, 1.08fr);
+}
+
+.poem-work:nth-of-type(even) .work-figure {
+  order: 2;
+}
+
+.work-figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: min(52rem, 88svh);
+  padding: clamp(0.6rem, 1.4vw, 1rem);
+  background:
+    linear-gradient(135deg, rgba(23, 17, 12, 0.14), transparent 38%),
+    rgba(220, 198, 155, 0.34);
+  border: 1px solid var(--soft-line);
+}
+
+.image-trigger {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.image-trigger:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 0.35rem;
+}
+
+.work-figure img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: min(48rem, 84svh);
+  object-fit: contain;
+  object-position: center;
+  box-shadow: 0 1.2rem 3.2rem rgba(23, 17, 12, 0.26);
+}
+
+.poem-work--objects .work-figure img {
+  filter: contrast(1.05) saturate(0.94) brightness(1.04);
+}
+
+.poem-work--evening .work-figure img {
+  filter: contrast(1.04) saturate(1.08) brightness(1.2);
+}
+
+.work-text {
+  display: grid;
+  align-content: center;
+  gap: clamp(1rem, 2.4vw, 2rem);
+  min-height: min(52rem, 88svh);
+  padding: clamp(1rem, 3vw, 3rem);
+  border-left: 1px solid var(--line);
+}
+
+.poem-work:nth-of-type(even) .work-text {
+  border-right: 1px solid var(--line);
+  border-left: 0;
+}
+
+.work-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+}
+
+.work-meta span {
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--soft-line);
+}
+
+.poem-lines {
+  position: relative;
+  padding-top: clamp(0.8rem, 2vw, 1.5rem);
+  color: var(--ink);
+  font-size: clamp(1.2rem, 2.15vw, 2.5rem);
+  line-height: 1.12;
+}
+
+.poem-lines::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(26rem, 68%);
+  height: 1px;
+  content: "";
+  background: var(--red);
+}
+
+.poem-lines p {
+  max-width: 18ch;
+}
+
+.poem-lines p:nth-child(even) {
+  margin-left: min(5vw, 3rem);
+}
+
+.poem-lines p:nth-child(5),
+.poem-work--evening .poem-lines p:nth-child(6),
+.poem-work--evening .poem-lines p:nth-child(8) {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.poem-lines--compact {
+  font-size: clamp(1.05rem, 1.55vw, 1.82rem);
+  line-height: 1.2;
+}
+
+.poem-lines--compact p {
+  max-width: 26ch;
+}
+
+.poem-lines--compact p:nth-child(6),
+.poem-lines--compact p:nth-child(8),
+.poem-lines--compact p:nth-child(10) {
+  max-width: 30ch;
+}
+
+.poem-work--evening .work-text h2 {
+  color: var(--red);
+}
+
+.poem-work--evening .poem-lines::before {
+  background: var(--gold);
+}
+
+.poem-work--landscape {
+  grid-template-columns: 1fr;
+  max-width: 88rem;
+}
+
+.poem-work--landscape .work-figure {
+  min-height: 0;
+}
+
+.poem-work--landscape .image-trigger {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.poem-work--landscape .work-figure img {
+  width: auto;
+  max-width: 100%;
+  max-height: min(42rem, 74svh);
+  filter: contrast(1.03) saturate(0.96) brightness(1.04);
+}
+
+.poem-work--landscape .work-text {
+  min-height: auto;
+  max-width: 48rem;
+  margin-left: auto;
+  border-top: 1px solid var(--line);
+  border-left: 0;
+}
+
+.poem-work--landscape .work-text h2 {
+  max-width: 15ch;
+  color: var(--blue);
+}
+
+.poem-lines--short {
+  font-size: clamp(1.15rem, 1.8vw, 2.05rem);
+  line-height: 1.18;
+}
+
+.poem-lines--short p {
+  max-width: 28ch;
+}
+
+.poem-work--mourning .work-figure {
+  background:
+    linear-gradient(135deg, rgba(23, 17, 12, 0.2), transparent 42%),
+    rgba(54, 43, 30, 0.2);
+}
+
+.poem-work--mourning .work-figure img {
+  filter: contrast(1.05) saturate(1.02) brightness(1.12);
+}
+
+.poem-work--mourning .work-text h2 {
+  color: var(--red);
+}
+
+.poem-work--mourning .poem-lines p:nth-child(5),
+.poem-work--mourning .poem-lines p:nth-child(6) {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.poem-work--laughter .work-figure {
+  background:
+    linear-gradient(135deg, rgba(35, 72, 90, 0.18), transparent 42%),
+    rgba(220, 198, 155, 0.3);
+}
+
+.poem-work--laughter .work-figure img {
+  filter: contrast(1.04) saturate(1.08) brightness(1.04);
+}
+
+.poem-work--laughter .work-text h2 {
+  color: var(--gold);
+}
+
+.poem-work--laughter .poem-lines::before {
+  background: var(--blue);
+}
+
+.poem-lines--chant {
+  font-size: clamp(1rem, 1.45vw, 1.62rem);
+  line-height: 1.22;
+}
+
+.poem-lines--chant p {
+  max-width: 34ch;
+}
+
+.poem-lines--chant p:nth-child(odd) {
+  margin-left: min(3vw, 2rem);
+}
+
+.poem-lines--chant p:nth-child(5),
+.poem-lines--chant p:nth-child(6),
+.poem-lines--chant p:nth-child(7) {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.closing-field {
+  min-height: 70svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(0.3rem, 1.2vw, 0.9rem);
+  padding: clamp(3rem, 7vw, 7rem) clamp(1rem, 6vw, 6rem);
+}
+
+.closing-field p {
+  color: var(--ink);
+  font-size: clamp(2.8rem, 7vw, 8.5rem);
+  font-weight: 400;
+  line-height: 0.82;
+}
+
+.closing-field p:nth-child(2) {
+  margin-left: 10vw;
+  color: var(--red);
+}
+
+.closing-field p:nth-child(3) {
+  max-width: 10ch;
+  margin-left: auto;
+  color: var(--gold);
+  font-style: italic;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 3vw, 2rem);
+  background: rgba(12, 8, 5, 0.9);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox__image {
+  width: auto;
+  height: auto;
+  max-width: 96vw;
+  max-height: 92svh;
+  object-fit: contain;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.45);
+}
+
+.lightbox__close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid rgba(220, 198, 155, 0.35);
+  border-radius: 50%;
+  background: rgba(12, 8, 5, 0.72);
+  color: var(--paper-light);
+  cursor: pointer;
+  font: 400 2rem/1 Arial, Helvetica, sans-serif;
+}
+
+.lightbox__close:hover,
+.lightbox__close:focus-visible {
+  background: rgba(139, 29, 23, 0.82);
+  outline: none;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .poem-work,
+  .poem-work:nth-of-type(even) {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero__image {
+    min-height: 58svh;
+  }
+
+  .hero__image::after {
+    background: linear-gradient(0deg, rgba(23, 17, 12, 0.76), transparent 58%);
+  }
+
+  .hero__copy {
+    margin-top: -7rem;
+    padding-bottom: 3rem;
+  }
+
+  .glyph-strip {
+    position: relative;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .poem-work:nth-of-type(even) .work-figure {
+    order: 0;
+  }
+
+  .work-figure {
+    min-height: 0;
+  }
+
+  .work-figure img {
+    width: 100%;
+    max-height: none;
+  }
+
+  .poem-work--landscape .work-figure img {
+    width: 100%;
+    max-height: none;
+  }
+
+  .image-trigger {
+    width: 100%;
+  }
+
+  .work-text,
+  .poem-work:nth-of-type(even) .work-text {
+    min-height: auto;
+    border-right: 0;
+    border-left: 1px solid var(--line);
+  }
+
+  .archive-intro h2,
+  .work-text h2 {
+    max-width: 12ch;
+  }
+
+  .poem-lines p:nth-child(even) {
+    margin-left: 7vw;
+  }
+}
+
+@media (max-width: 520px) {
+  .glyph-strip {
+    font-size: 0.62rem;
+  }
+
+  .hero__copy {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .poem-work {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  .work-text {
+    padding-right: 0.75rem;
+  }
+
+  .poem-lines--compact {
+    font-size: clamp(1rem, 5.5vw, 1.45rem);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__image img,
+  .closing-field p {
+    transition: transform 1.2s ease-out;
+  }
+}
