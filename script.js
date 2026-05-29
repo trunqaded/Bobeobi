@@ -2,7 +2,7 @@ const motionQuery = window.matchMedia("(prefers-reduced-motion: no-preference)")
 
 if (motionQuery.matches) {
   const heroImage = document.querySelector(".hero__image img");
-  const finalLines = [...document.querySelectorAll(".closing-field p")];
+  const poemLines = [...document.querySelectorAll(".poem-lines p")];
 
   const draw = () => {
     const scroll = window.scrollY;
@@ -12,10 +12,11 @@ if (motionQuery.matches) {
       heroImage.style.transform = `translateY(${scroll * 0.08}px) scale(1.06)`;
     }
 
-    finalLines.forEach((line, index) => {
+    poemLines.forEach((line, index) => {
       const rect = line.getBoundingClientRect();
-      const progress = (rect.top - height * 0.5) / height;
-      line.style.transform = `translateX(${progress * (index % 2 ? -28 : 24)}px)`;
+      const progress = (rect.top - height * 0.58) / height;
+      const direction = index % 2 ? -1 : 1;
+      line.style.transform = `translateX(${progress * direction * 14}px)`;
     });
   };
 

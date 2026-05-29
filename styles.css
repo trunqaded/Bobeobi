@@ -157,7 +157,7 @@ h1 {
   bottom: 0;
   left: 0;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   border-top: 1px solid rgba(234, 217, 185, 0.18);
   color: rgba(234, 217, 185, 0.72);
   font-family: Arial, Helvetica, sans-serif;
@@ -427,6 +427,30 @@ h1 {
   background: var(--blue);
 }
 
+.poem-work--monster .work-figure {
+  background:
+    linear-gradient(135deg, rgba(12, 8, 5, 0.3), transparent 44%),
+    rgba(35, 72, 90, 0.2);
+}
+
+.poem-work--monster .work-figure img {
+  filter: contrast(1.06) saturate(0.92) brightness(1.16);
+}
+
+.poem-work--monster .work-text h2 {
+  color: var(--red);
+}
+
+.poem-work--monster .poem-lines::before {
+  background: var(--blue);
+}
+
+.poem-work--monster .poem-lines p:nth-child(1),
+.poem-work--monster .poem-lines p:nth-child(7) {
+  color: var(--gold);
+  font-style: italic;
+}
+
 .poem-lines--chant {
   font-size: clamp(1rem, 1.45vw, 1.62rem);
   line-height: 1.22;
@@ -443,34 +467,6 @@ h1 {
 .poem-lines--chant p:nth-child(5),
 .poem-lines--chant p:nth-child(6),
 .poem-lines--chant p:nth-child(7) {
-  color: var(--gold);
-  font-style: italic;
-}
-
-.closing-field {
-  min-height: 70svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: clamp(0.3rem, 1.2vw, 0.9rem);
-  padding: clamp(3rem, 7vw, 7rem) clamp(1rem, 6vw, 6rem);
-}
-
-.closing-field p {
-  color: var(--ink);
-  font-size: clamp(2.8rem, 7vw, 8.5rem);
-  font-weight: 400;
-  line-height: 0.82;
-}
-
-.closing-field p:nth-child(2) {
-  margin-left: 10vw;
-  color: var(--red);
-}
-
-.closing-field p:nth-child(3) {
-  max-width: 10ch;
-  margin-left: auto;
   color: var(--gold);
   font-style: italic;
 }
@@ -619,7 +615,7 @@ h1 {
 
 @media (prefers-reduced-motion: no-preference) {
   .hero__image img,
-  .closing-field p {
+  .poem-lines p {
     transition: transform 1.2s ease-out;
   }
 }

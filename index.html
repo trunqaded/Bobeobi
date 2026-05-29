@@ -8,7 +8,7 @@
       name="description"
       content="An atmospheric art project around poems by Velimir Khlebnikov."
     >
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=6">
   </head>
   <body>
     <main class="page-shell">
@@ -22,7 +22,7 @@
           >
         </div>
         <div class="hero__copy">
-          <p class="kicker">Велимир Хлебников</p>
+          <p class="kicker">Велимир Хлебников / trunqo</p>
           <h1>Бобэоби</h1>
           <p class="hero__line">Слово идет впереди зрения.</p>
         </div>
@@ -32,6 +32,7 @@
           <a href="#pure-girls">Мне спойте...</a>
           <a href="#pied-piper">Любил я...</a>
           <a href="#laughter-spell">Заклятие...</a>
+          <a href="#monster-summits">Чудовище...</a>
         </nav>
       </section>
 
@@ -200,16 +201,43 @@
         </article>
       </section>
 
-      <section class="closing-field" aria-label="Closing composition">
-        <p>много стихов</p>
-        <p>много глаз</p>
-        <p>один нерв</p>
+      <section class="poem-work poem-work--monster" id="monster-summits" aria-label="Poem: Monster of the summits">
+        <figure class="work-figure">
+          <button class="image-trigger" type="button" aria-label="Open image fullscreen">
+          <img
+            src="assets/khlebnikov-monster-summits-preview.jpg"
+            data-full="assets/khlebnikov-monster-summits.png"
+            alt="A dark mountain monster holding a woman."
+            loading="lazy"
+            decoding="async"
+          >
+          </button>
+        </figure>
+
+        <article class="work-text">
+          <div class="work-meta">
+            <span>1908</span>
+            <span>вершины</span>
+          </div>
+          <h2>Чудовище - жилец вершин...</h2>
+          <div class="poem-lines poem-lines--short">
+            <p>Чудовище - жилец вершин,</p>
+            <p>С ужасным задом,</p>
+            <p>Схватило несшую кувшин,</p>
+            <p>С прелестным взглядом.</p>
+            <p>Она качалась, точно плод,</p>
+            <p>В ветвях косматых рук.</p>
+            <p>Чудовище, урод,</p>
+            <p>Довольно, тешит свой досуг.</p>
+          </div>
+        </article>
       </section>
+
     </main>
     <div class="lightbox" aria-hidden="true">
       <button class="lightbox__close" type="button" aria-label="Close fullscreen image">×</button>
       <img class="lightbox__image" alt="">
     </div>
-    <script src="script.js?v=4"></script>
+    <script src="script.js?v=6"></script>
   </body>
 </html>
