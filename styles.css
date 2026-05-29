@@ -167,10 +167,14 @@ h1 {
 
 .glyph-strip a,
 .glyph-strip span {
+  min-width: 0;
   min-height: 3.6rem;
   display: grid;
   place-items: center;
+  padding: 0.25rem 0.45rem;
   border-right: 1px solid rgba(234, 217, 185, 0.18);
+  overflow-wrap: anywhere;
+  text-align: center;
 }
 
 .glyph-strip a:hover {
@@ -638,6 +642,7 @@ h1 {
   .glyph-strip {
     position: relative;
     grid-template-columns: repeat(2, 1fr);
+    font-size: 0.68rem;
   }
 
   .poem-work:nth-of-type(even) .work-figure {
@@ -681,7 +686,13 @@ h1 {
 
 @media (max-width: 520px) {
   .glyph-strip {
-    font-size: 0.62rem;
+    font-size: 0.58rem;
+  }
+
+  .glyph-strip a {
+    min-height: 3rem;
+    padding-right: 0.25rem;
+    padding-left: 0.25rem;
   }
 
   .hero__copy {
