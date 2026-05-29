@@ -8,16 +8,17 @@
       name="description"
       content="An atmospheric art project around poems by Velimir Khlebnikov."
     >
-    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="styles.css?v=4">
   </head>
   <body>
     <main class="page-shell">
       <section class="hero" aria-label="Velimir Khlebnikov">
         <div class="hero__image" aria-hidden="true">
           <img
-            src="assets/khlebnikov-illustration.png"
-            srcset="assets/khlebnikov-illustration.png 1x, assets/khlebnikov-illustration-2x.png 2x"
+            src="assets/khlebnikov-illustration-preview.jpg"
             alt=""
+            decoding="async"
+            fetchpriority="high"
           >
         </div>
         <div class="hero__copy">
@@ -43,9 +44,11 @@
         <figure class="work-figure">
           <button class="image-trigger" type="button" aria-label="Open image fullscreen">
           <img
-            src="assets/khlebnikov-illustration.png"
-            srcset="assets/khlebnikov-illustration.png 1x, assets/khlebnikov-illustration-2x.png 2x"
+            src="assets/khlebnikov-illustration-preview.jpg"
+            data-full="assets/khlebnikov-illustration-2x.png"
             alt="Scattered objects forming a face."
+            loading="lazy"
+            decoding="async"
           >
           </button>
         </figure>
@@ -72,9 +75,11 @@
         <figure class="work-figure">
           <button class="image-trigger" type="button" aria-label="Open image fullscreen">
           <img
-            src="assets/khlebnikov-evening-vertical.png"
-            srcset="assets/khlebnikov-evening-vertical.png 1x, assets/khlebnikov-evening-vertical-2x.png 2x"
+            src="assets/khlebnikov-evening-vertical-preview.jpg"
+            data-full="assets/khlebnikov-evening-vertical-2x.png"
             alt="A rider on a mechanical deer moving through a village at sunset."
+            loading="lazy"
+            decoding="async"
           >
           </button>
         </figure>
@@ -104,9 +109,11 @@
         <figure class="work-figure">
           <button class="image-trigger" type="button" aria-label="Open image fullscreen">
           <img
-            src="assets/khlebnikov-pure-girls.png"
-            srcset="assets/khlebnikov-pure-girls.png 1x, assets/khlebnikov-pure-girls-2x.png 2x"
+            src="assets/khlebnikov-pure-girls-preview.jpg"
+            data-full="assets/khlebnikov-pure-girls-2x.png"
             alt="A classical group of young women and men under a flowering tree."
+            loading="lazy"
+            decoding="async"
           >
           </button>
         </figure>
@@ -130,9 +137,11 @@
         <figure class="work-figure">
           <button class="image-trigger" type="button" aria-label="Open image fullscreen">
           <img
-            src="assets/khlebnikov-pied-piper.png"
-            srcset="assets/khlebnikov-pied-piper.png 1x, assets/khlebnikov-pied-piper-2x.png 2x"
+            src="assets/khlebnikov-pied-piper-preview.jpg"
+            data-full="assets/khlebnikov-pied-piper-2x.png"
             alt="A dark funeral scene in a cemetery with candles and mourners."
+            loading="lazy"
+            decoding="async"
           >
           </button>
         </figure>
@@ -160,9 +169,11 @@
         <figure class="work-figure">
           <button class="image-trigger" type="button" aria-label="Open image fullscreen">
           <img
-            src="assets/khlebnikov-laughter-spell.png"
-            srcset="assets/khlebnikov-laughter-spell.png 1x, assets/khlebnikov-laughter-spell-2x.png 2x"
+            src="assets/khlebnikov-laughter-spell-preview.jpg"
+            data-full="assets/khlebnikov-laughter-spell-2x.png"
             alt="Forest figures laughing in a strange bright clearing."
+            loading="lazy"
+            decoding="async"
           >
           </button>
         </figure>
@@ -199,6 +210,6 @@
       <button class="lightbox__close" type="button" aria-label="Close fullscreen image">×</button>
       <img class="lightbox__image" alt="">
     </div>
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=4"></script>
   </body>
 </html>

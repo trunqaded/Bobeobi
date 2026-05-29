@@ -59,8 +59,8 @@ imageTriggers.forEach((trigger) => {
     const image = trigger.querySelector("img");
     if (!lightbox || !lightboxImage || !image) return;
 
-    lightboxImage.src = image.currentSrc || image.src;
-    lightboxImage.srcset = image.srcset;
+    lightboxImage.src = image.dataset.full || image.currentSrc || image.src;
+    lightboxImage.removeAttribute("srcset");
     lightboxImage.alt = image.alt;
     lightboxImage.style.filter = getComputedStyle(image).filter;
     lightbox.classList.add("is-open");
