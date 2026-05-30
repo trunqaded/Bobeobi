@@ -151,6 +151,15 @@ h1 {
   line-height: 1.02;
 }
 
+.hero__note {
+  max-width: 28ch;
+  margin-top: 1.2rem;
+  color: rgba(234, 217, 185, 0.58);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.8rem, 1.1vw, 0.98rem);
+  line-height: 1.35;
+}
+
 .glyph-strip {
   position: absolute;
   right: 0;
@@ -180,6 +189,12 @@ h1 {
 .glyph-strip a:hover {
   color: var(--paper-light);
   background: rgba(159, 34, 26, 0.24);
+}
+
+.glyph-strip a.is-active {
+  color: var(--paper-light);
+  background:
+    linear-gradient(90deg, rgba(139, 29, 23, 0.42), rgba(35, 72, 90, 0.22));
 }
 
 .archive-intro {
@@ -236,6 +251,7 @@ h1 {
 }
 
 .image-trigger {
+  position: relative;
   display: block;
   width: fit-content;
   max-width: 100%;
@@ -243,6 +259,35 @@ h1 {
   border: 0;
   background: transparent;
   cursor: zoom-in;
+}
+
+.image-trigger::after {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border: 1px solid rgba(220, 198, 155, 0.5);
+  border-radius: 50%;
+  background: rgba(12, 8, 5, 0.58);
+  color: var(--paper-light);
+  content: "+";
+  font: 400 1.35rem/1 Arial, Helvetica, sans-serif;
+  opacity: 0.78;
+  pointer-events: none;
+  transition:
+    background 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.image-trigger:hover::after,
+.image-trigger:focus-visible::after {
+  background: rgba(139, 29, 23, 0.82);
+  opacity: 1;
+  transform: scale(1.06);
 }
 
 .image-trigger:focus-visible {
@@ -556,7 +601,7 @@ h1 {
   display: grid;
   place-items: center;
   padding: clamp(1rem, 3vw, 2rem);
-  background: rgba(12, 8, 5, 0.9);
+  background: rgba(12, 8, 5, 0.78);
   opacity: 0;
   pointer-events: none;
   transition: opacity 180ms ease;
@@ -613,6 +658,23 @@ h1 {
   object-fit: cover;
   object-position: 50% 66%;
   filter: contrast(1.08) saturate(0.9) brightness(0.82);
+}
+
+.project-note {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(18rem, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  padding: clamp(2.5rem, 6vw, 6rem) clamp(1rem, 6vw, 6rem);
+  border-top: 1px solid var(--line);
+}
+
+.project-note__body {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 38rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  line-height: 1.35;
 }
 
 @media (max-width: 900px) {
@@ -679,6 +741,10 @@ h1 {
     max-width: 12ch;
   }
 
+  .project-note {
+    grid-template-columns: 1fr;
+  }
+
   .poem-lines p:nth-child(even) {
     margin-left: 7vw;
   }
@@ -693,6 +759,14 @@ h1 {
     min-height: 3rem;
     padding-right: 0.25rem;
     padding-left: 0.25rem;
+  }
+
+  .image-trigger::after {
+    right: 0.55rem;
+    bottom: 0.55rem;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.1rem;
   }
 
   .hero__copy {

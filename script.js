@@ -44,6 +44,31 @@ const lightbox = document.querySelector(".lightbox");
 const lightboxImage = document.querySelector(".lightbox__image");
 const lightboxClose = document.querySelector(".lightbox__close");
 const imageTriggers = [...document.querySelectorAll(".image-trigger")];
+const navLinks = [...document.querySelectorAll(".glyph-strip a")];
+const poemSections = [...document.querySelectorAll(".poem-work")];
+const linkById = new Map(
+  navLinks.map((link) => [link.getAttribute("href")?.slice(1), link])
+);
+
+const updateActiveNavigation = () => {
+  if (!navLinks.length || !poemSections.length) return;
+
+  const targetY = window.innerHeight * 0.46;
+  const activeSection =
+    poemSections.find((section) => {
+      const rect = section.getBoundingClientRect();
+      return rect.top <= targetY && rect.bottom >= targetY;
+    }) ||
+    poemSections
+      .map((section) => ({
+        section,
+        distance: Math.abs(section.getBoundingClientRect().top - targetY)
+      }))
+      .sort((left, right) => left.distance - right.distance)[0]?.section;
+
+  navLinks.forEach((link) => link.classList.remove("is-active"));
+  linkById.get(activeSection?.id)?.classList.add("is-active");
+};
 
 const closeLightbox = () => {
   if (!lightbox || !lightboxImage) return;
@@ -63,7 +88,7 @@ imageTriggers.forEach((trigger) => {
     lightboxImage.src = image.dataset.full || image.currentSrc || image.src;
     lightboxImage.removeAttribute("srcset");
     lightboxImage.alt = image.alt;
-    lightboxImage.style.filter = getComputedStyle(image).filter;
+    lightboxImage.style.filter = "";
     lightbox.classList.add("is-open");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
@@ -84,3 +109,22 @@ window.addEventListener("keydown", (event) => {
     closeLightbox();
   }
 });
+
+let navigationTicking = false;
+
+window.addEventListener(
+  "scroll",
+  () => {
+    if (!navigationTicking) {
+      window.requestAnimationFrame(() => {
+        updateActiveNavigation();
+        navigationTicking = false;
+      });
+      navigationTicking = true;
+    }
+  },
+  { passive: true }
+);
+
+window.addEventListener("resize", updateActiveNavigation);
+updateActiveNavigation();
