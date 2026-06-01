@@ -46,6 +46,8 @@ const lightboxClose = document.querySelector(".lightbox__close");
 const imageTriggers = [...document.querySelectorAll(".image-trigger")];
 const navLinks = [...document.querySelectorAll(".glyph-strip a")];
 const poemSections = [...document.querySelectorAll(".poem-work")];
+const shareButton = document.querySelector("[data-share-button]");
+const shareStatus = document.querySelector("[data-share-status]");
 const linkById = new Map(
   navLinks.map((link) => [link.getAttribute("href")?.slice(1), link])
 );
@@ -128,3 +130,43 @@ window.addEventListener(
 
 window.addEventListener("resize", updateActiveNavigation);
 updateActiveNavigation();
+
+const copyText = async (text) => {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return;
+    } catch {
+      // Try the selection fallback below when browser permissions block Clipboard API.
+    }
+  }
+
+  const field = document.createElement("textarea");
+  field.value = text;
+  field.setAttribute("readonly", "");
+  field.style.position = "fixed";
+  field.style.top = "-100vh";
+  document.body.append(field);
+  field.select();
+  const copied = document.execCommand("copy");
+  field.remove();
+
+  if (!copied) {
+    throw new Error("Copy command failed");
+  }
+};
+
+shareButton?.addEventListener("click", async () => {
+  const url = "https://bobeobi.trunqo.com/";
+
+  try {
+    await copyText(url);
+    if (shareStatus) shareStatus.textContent = "Ссылка скопирована.";
+  } catch {
+    if (shareStatus) shareStatus.textContent = url;
+  }
+
+  window.setTimeout(() => {
+    if (shareStatus) shareStatus.textContent = "";
+  }, 2600);
+});
