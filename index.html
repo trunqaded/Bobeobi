@@ -20,11 +20,12 @@
     <meta name="twitter:title" content="Бобэоби">
     <meta name="twitter:description" content="Стихи Велимира Хлебникова и иллюстрации trunqo.">
     <meta name="twitter:image" content="https://bobeobi.trunqo.com/assets/social-preview.jpg?v=2">
+    <link rel="canonical" href="https://bobeobi.trunqo.com/">
     <link rel="shortcut icon" href="/favicon.ico?v=3">
     <link rel="icon" type="image/svg+xml" href="assets/favicon-smile.svg?v=3">
     <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png?v=3">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3">
-    <link rel="stylesheet" href="styles.css?v=11">
+    <link rel="stylesheet" href="styles.css?v=12">
   </head>
   <body>
     <main class="page-shell">
@@ -42,10 +43,10 @@
           <h1>Бобэоби</h1>
           <p class="hero__line">Слово идет впереди зрения.</p>
           <p class="hero__note">Визуальный сборник стихов Велимира Хлебникова.</p>
-          <button class="share-button" type="button" data-share-button aria-label="Copy site link">
+          <button class="share-button" type="button" data-share-button aria-describedby="share-status" aria-label="Copy site link">
             Поделиться
           </button>
-          <p class="share-status" data-share-status aria-live="polite"></p>
+          <p class="share-status" id="share-status" data-share-status aria-live="polite"></p>
         </div>
         <nav class="glyph-strip" aria-label="Poem list">
           <a href="#bag">Из мешка</a>
@@ -69,7 +70,7 @@
           <button class="image-trigger" type="button" aria-label="Open image fullscreen">
           <img
             src="assets/khlebnikov-illustration-preview.jpg"
-            data-full="assets/khlebnikov-illustration-2x.png"
+            data-full="assets/fullscreen/khlebnikov-illustration.jpg"
             alt="Scattered objects forming a face."
             loading="lazy"
             decoding="async"
@@ -100,7 +101,7 @@
           <button class="image-trigger" type="button" aria-label="Open image fullscreen">
           <img
             src="assets/khlebnikov-evening-vertical-preview.jpg"
-            data-full="assets/khlebnikov-evening-vertical-2x.png"
+            data-full="assets/fullscreen/khlebnikov-evening-vertical.jpg"
             alt="A rider on a mechanical deer moving through a village at sunset."
             loading="lazy"
             decoding="async"
@@ -134,7 +135,7 @@
           <button class="image-trigger" type="button" aria-label="Open image fullscreen">
           <img
             src="assets/khlebnikov-pure-girls-preview.jpg"
-            data-full="assets/khlebnikov-pure-girls-2x.png"
+            data-full="assets/fullscreen/khlebnikov-pure-girls.jpg"
             alt="A classical group of young women and men under a flowering tree."
             loading="lazy"
             decoding="async"
@@ -162,7 +163,7 @@
           <button class="image-trigger" type="button" aria-label="Open image fullscreen">
           <img
             src="assets/khlebnikov-pied-piper-preview.jpg"
-            data-full="assets/khlebnikov-pied-piper-2x.png"
+            data-full="assets/fullscreen/khlebnikov-pied-piper.jpg"
             alt="A dark funeral scene in a cemetery with candles and mourners."
             loading="lazy"
             decoding="async"
@@ -194,7 +195,7 @@
           <button class="image-trigger" type="button" aria-label="Open image fullscreen">
           <img
             src="assets/khlebnikov-laughter-spell-preview.jpg"
-            data-full="assets/khlebnikov-laughter-spell-2x.png"
+            data-full="assets/fullscreen/khlebnikov-laughter-spell.jpg"
             alt="Forest figures laughing in a strange bright clearing."
             loading="lazy"
             decoding="async"
@@ -229,7 +230,7 @@
           <button class="image-trigger" type="button" aria-label="Open image fullscreen">
           <img
             src="assets/khlebnikov-monster-summits-preview.jpg"
-            data-full="assets/khlebnikov-monster-summits.png"
+            data-full="assets/fullscreen/khlebnikov-monster-summits.jpg"
             alt="A dark mountain monster holding a woman."
             loading="lazy"
             decoding="async"
@@ -261,7 +262,7 @@
           <button class="image-trigger" type="button" aria-label="Open image fullscreen">
           <img
             src="assets/khlebnikov-ghosts-preview.jpg"
-            data-full="assets/khlebnikov-ghosts.png"
+            data-full="assets/fullscreen/khlebnikov-ghosts.jpg"
             alt="A dark collage of ghosts, a horse skull, ink, and night objects."
             loading="lazy"
             decoding="async"
@@ -314,7 +315,7 @@
           <button class="image-trigger" type="button" aria-label="Open image fullscreen">
           <img
             src="assets/khlebnikov-elephants-tusks-preview.jpg"
-            data-full="assets/khlebnikov-elephants-tusks.png"
+            data-full="assets/fullscreen/khlebnikov-elephants-tusks.jpg"
             alt="A crowded fight in a city square."
             loading="lazy"
             decoding="async"
@@ -360,10 +361,10 @@
       </section>
 
     </main>
-    <div class="lightbox" aria-hidden="true">
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="Fullscreen image" aria-hidden="true">
       <button class="lightbox__close" type="button" aria-label="Close fullscreen image">×</button>
       <img class="lightbox__image" alt="">
     </div>
-    <script src="script.js?v=11"></script>
+    <script src="script.js?v=12"></script>
   </body>
 </html>

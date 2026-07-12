@@ -185,7 +185,8 @@ h1 {
   border-color: rgba(234, 217, 185, 0.62);
   background: rgba(139, 29, 23, 0.36);
   color: var(--paper-light);
-  outline: none;
+  outline: 2px solid rgba(234, 217, 185, 0.5);
+  outline-offset: 0.25rem;
 }
 
 .share-status {
@@ -678,7 +679,8 @@ h1 {
 .lightbox__close:hover,
 .lightbox__close:focus-visible {
   background: rgba(139, 29, 23, 0.82);
-  outline: none;
+  outline: 2px solid rgba(234, 217, 185, 0.5);
+  outline-offset: 0.2rem;
 }
 
 .final-smile {
@@ -829,5 +831,19 @@ h1 {
   .hero__image img,
   .poem-lines p {
     transition: transform 1.2s ease-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

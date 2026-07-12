@@ -48,6 +48,9 @@ const navLinks = [...document.querySelectorAll(".glyph-strip a")];
 const poemSections = [...document.querySelectorAll(".poem-work")];
 const shareButton = document.querySelector("[data-share-button]");
 const shareStatus = document.querySelector("[data-share-status]");
+const canonicalLink = document.querySelector('link[rel="canonical"]');
+const shareUrl = canonicalLink?.href || window.location.href.split("#")[0];
+let lastFocusedElement = null;
 const linkById = new Map(
   navLinks.map((link) => [link.getAttribute("href")?.slice(1), link])
 );
@@ -80,6 +83,8 @@ const closeLightbox = () => {
   lightboxImage.removeAttribute("srcset");
   lightboxImage.style.filter = "";
   document.body.style.overflow = "";
+  lastFocusedElement?.focus?.();
+  lastFocusedElement = null;
 };
 
 imageTriggers.forEach((trigger) => {
@@ -87,6 +92,7 @@ imageTriggers.forEach((trigger) => {
     const image = trigger.querySelector("img");
     if (!lightbox || !lightboxImage || !image) return;
 
+    lastFocusedElement = document.activeElement;
     lightboxImage.src = image.dataset.full || image.currentSrc || image.src;
     lightboxImage.removeAttribute("srcset");
     lightboxImage.alt = image.alt;
@@ -146,8 +152,11 @@ const copyText = async (text) => {
   field.setAttribute("readonly", "");
   field.style.position = "fixed";
   field.style.top = "-100vh";
+  field.style.left = "0";
   document.body.append(field);
+  field.focus();
   field.select();
+  field.setSelectionRange(0, field.value.length);
   const copied = document.execCommand("copy");
   field.remove();
 
@@ -157,13 +166,11 @@ const copyText = async (text) => {
 };
 
 shareButton?.addEventListener("click", async () => {
-  const url = "https://bobeobi.trunqo.com/";
-
   try {
-    await copyText(url);
+    await copyText(shareUrl);
     if (shareStatus) shareStatus.textContent = "Ссылка скопирована.";
   } catch {
-    if (shareStatus) shareStatus.textContent = url;
+    if (shareStatus) shareStatus.textContent = `Скопируй ссылку: ${shareUrl}`;
   }
 
   window.setTimeout(() => {

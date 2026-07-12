@@ -1,0 +1,17 @@
+[project]
+name = "Bobeobi"
+display_name = "Bobeobi"
+order = 60
+stage = "live"
+kind = "published site"
+contract = "README.md"
+featured = false
+summary = "An atmospheric visual collection of Velimir Khlebnikov's poetry."
+next_step = "Maintain the published experience and run periodic browser smoke checks."
+url = "https://bobeobi.trunqo.com/"
+repository = "https://github.com/trunqaded/Bobeobi"
+
+[verification]
+status = "passing"
+checked_at = "2026-07-12"
+evidence = "Local static server checked; asset graph has no missing files; production URL returns HTTP/2 200."
